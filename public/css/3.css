@@ -1,0 +1,135 @@
+:root {
+    --bg-main: #8b5e3c;           /* coklat tua hangat */
+    --card-bg: rgba(209, 178, 151, 0.95);  /* coklat soft semi-transparan */
+    --border-main: #70442a;       /* garis tegas */
+    --text-dark: #2e1d14;         /* teks coklat tua */
+    --btn-gradient-start: #522910; 
+    --btn-gradient-end: #985e43;
+    --btn-hover-start: #a8572e;
+    --btn-hover-end: #8b4424;
+    --shadow-soft: 6px 6px 0px #442a1b;
+    --font-estetik: 'Playfair Display', serif;
+}
+
+/* ===== IMPORT FONT ===== */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+
+/* ===== BODY ===== */
+body {
+    background-color: var(--bg-main);
+    min-height: 100vh;
+    padding: 40px;
+    font-family: var(--font-estetik);
+    color: var(--text-dark);
+}
+
+/* ===== CONTAINER ===== */
+.container {
+    max-width: 700px;
+    margin: auto;
+}
+
+/* ===== CARD ===== */
+.card-custom {
+    background-color: var(--card-bg);
+    border: 2px solid var(--border-main);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: var(--shadow-soft);
+    position: relative;
+}
+
+/* ===== TITLE ===== */
+.card-custom h3 {
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: var(--text-dark);
+}
+
+/* ===== FORM ===== */
+label {
+    font-weight: 600;
+    color: var(--text-dark);
+    display: block;
+    margin-bottom: 5px;
+}
+
+.form-control {
+    border: 2px solid var(--border-main);
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-family: var(--font-estetik);
+    margin-bottom: 20px;
+    font-weight: 500;
+    background-color: rgba(255, 235, 210, 0.3); /* coklat hangat transparan */
+    color: var(--text-dark);
+}
+
+.form-control:focus {
+    border-color: var(--border-main);
+    box-shadow: 3px 3px 0px var(--border-main);
+    outline: none;
+}
+
+/* ===== BUTTON GROUP ===== */
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+/* ===== BUTTON SATU ===== */
+.btn {
+    border: none;
+    background: linear-gradient(135deg, var(--btn-gradient-start), var(--btn-gradient-end));
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: 0.3s ease;
+    font-family: var(--font-estetik);
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: rgba(255,255,255,0.2);
+    transform: rotate(45deg);
+    transition: all 0.5s ease;
+}
+
+.btn:hover::after {
+    top: 0;
+    left: 0;
+}
+
+.btn:hover {
+    background: linear-gradient(135deg, var(--btn-hover-start), var(--btn-hover-end));
+    box-shadow: 3px 3px 8px rgba(0,0,0,0.2);
+    color: #fff;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    body {
+        padding: 20px;
+    }
+
+    .card-custom {
+        padding: 20px;
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+}

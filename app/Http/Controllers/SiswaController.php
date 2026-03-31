@@ -23,12 +23,14 @@ class SiswaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nis' => 'required|numeric|unique:siswa,nis',
+            'nis' => 'required|regex:/^[0-9]+$/|unique:siswa,nis',
             'id_kelas' => 'required',
             'nama' => 'required',
             'jenis_kelamin' => 'required|in:L,P',
             'alamat' => 'required',
             'no_telp' => 'required',
+        ], [
+            'nis.regex' => 'NIS harus berupa angka!',
         ]);
 
         Siswa::create($request->all());
@@ -36,7 +38,6 @@ class SiswaController extends Controller
         return redirect()->route('siswa.index')
             ->with('success', 'Siswa berhasil ditambahkan!');
     }
-
 
     public function edit($id)
     {
@@ -46,13 +47,11 @@ class SiswaController extends Controller
         return view('siswa.edit', compact('siswa', 'kelas'));
     }
 
-
     public function update(Request $request, $id)
     {
         $siswa = Siswa::findOrFail($id);
 
         $request->validate([
-            'nis' => 'required|numeric|unique:siswa,nis,' . $id,
             'id_kelas' => 'required|exists:kelas,id',
             'nama' => 'required',
             'jenis_kelamin' => 'required|in:L,P',
@@ -60,12 +59,13 @@ class SiswaController extends Controller
             'no_telp' => 'required',
         ]);
 
-        $siswa->update($request->all());
+        $data = $request->except('nis');
+
+        $siswa->update($data);
 
         return redirect()->route('siswa.index')
             ->with('success', 'Siswa berhasil diupdate!');
     }
-
 
     public function destroy($id)
     {
@@ -73,6 +73,6 @@ class SiswaController extends Controller
         $siswa->delete();
 
         return redirect()->route('siswa.index')
-            ->with('success', 'yakin ingin hapus?siswa terhapus');
+            ->with('success', 'Siswa berhasil dihapus!');
     }
 }

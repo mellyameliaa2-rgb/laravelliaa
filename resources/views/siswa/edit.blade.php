@@ -10,6 +10,13 @@
 </head>
 <body>
 
+<!-- ✅ ALERT ERROR -->
+@if($errors->any())
+<script>
+    alert("{{ $errors->first() }}");
+</script>
+@endif
+
 <div class="container">
     <div class="card-custom">
 
@@ -26,7 +33,7 @@
                        id="nis"
                        name="nis"
                        value="{{ old('nis', $siswa->nis) }}"
-                       required>
+                       readonly> <!-- ✅ DIKUNCI -->
             </div>
 
             <div class="mb-3">

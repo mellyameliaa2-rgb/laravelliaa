@@ -10,6 +10,13 @@
 </head>
 <body>
 
+<!-- ✅ ALERT ERROR -->
+@if($errors->any())
+<script>
+    alert("{{ $errors->first() }}");
+</script>
+@endif
+
 <div class="container">
     <div class="card-custom">
 

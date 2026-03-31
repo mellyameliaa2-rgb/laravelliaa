@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         <th>Jenis Kelamin</th>
                         <th>No. Telepon</th>
                         <th>Alamat</th>
-                        <th width="150">Aksi</th>
+                        <th width="180">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -102,8 +102,21 @@ document.addEventListener('DOMContentLoaded', function() {
                         <td>Laki-laki</td>
                         @else<td>Perempuan</td>
                         @endif
-                        <td>{{ $dt->no_telp }}</td>
-                        <td>{{ $dt->alamat }}</td>
+                       <td>
+   <a href="tel:{{ preg_replace('/[^0-9+]/', '', $dt->no_telp) }}">
+        <i class="bi bi-telephone-fill me-1"></i>
+        {{ $dt->no_telp }}
+    </a>
+</td>
+                       <td>
+    <a href="https://www.google.com/maps?q={{ urlencode($dt->alamat) }}" 
+       target="_blank"
+       style="text-decoration: none; color: inherit;">
+       
+        <i class="bi bi-geo-alt-fill" style="color:#a8572e;"></i>
+        {{ $dt->alamat }}
+    </a>
+</td>
 <td class="d-flex justify-content-center gap-2">
 
     <a href="{{ route('siswa.edit', $dt->id) }}"

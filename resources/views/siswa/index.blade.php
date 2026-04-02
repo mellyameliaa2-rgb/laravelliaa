@@ -46,6 +46,11 @@
                         <i class="bi bi-plus-circle me-1"></i> Tambah Kelas
                     </a>
                 </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{ route('login') }}">
+                       <i class="bi bi-box-arrow-right me-1"></i> Logout
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

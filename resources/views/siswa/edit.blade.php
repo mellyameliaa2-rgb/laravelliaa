@@ -10,7 +10,6 @@
 </head>
 <body>
 
-<!-- ✅ ALERT ERROR -->
 @if($errors->any())
 <script>
     alert("{{ $errors->first() }}");
@@ -33,7 +32,7 @@
                        id="nis"
                        name="nis"
                        value="{{ old('nis', $siswa->nis) }}"
-                       readonly> <!-- ✅ DIKUNCI -->
+                       readonly> 
             </div>
 
             <div class="mb-3">

@@ -9,8 +9,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/login', function () {
+    return view('login');
+})->name('login');
 
 
+Route::post('/login', function () {
+})->name('login.post');
 Route::get('/beranda', [BerandaController::class, 'index'])->name('beranda.index');
 
 
@@ -34,4 +39,3 @@ Route::get('siswa/{id}/edit', [SiswaController::class, 'edit'])->name('siswa.edi
 Route::put('siswa/{id}', [SiswaController::class, 'update'])->name('siswa.update');
 Route::get('siswa/{id}/hapus', [SiswaController::class, 'hapus'])->name('siswa.hapus');
 Route::delete('siswa/{id}', [SiswaController::class, 'destroy'])->name('siswa.destroy');
-

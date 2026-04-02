@@ -10,7 +10,6 @@
 </head>
 <body>
 
-<!-- ✅ ALERT ERROR -->
 @if($errors->any())
 <script>
     alert("{{ $errors->first() }}");

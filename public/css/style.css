@@ -2,8 +2,8 @@
 
 :root {
     --bg-main: #8b5e3c;
-    --card-bg: #d1b297; 
-    --border-main: #70442a; 
+    --card-bg: rgba(227, 213, 198, 0.95); 
+    --border-main: #916a54; 
     --text-dark: #2e1d14;
     --shadow-soft: 6px 6px 0px #70442a;
     --btn-gradient-start: #c69c81;

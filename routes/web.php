@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\KelasController;
 use App\Http\Controllers\SiswaController;
-use App\Http\Controllers\BerandaController;
+use App\Http\Controllers\AdminDashboardController;
+use App\Http\Controllers\UserDashboardController;
+use App\Http\Controllers\AuthController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -13,11 +15,13 @@ Route::get('/login', function () {
     return view('login');
 })->name('login');
 
+Route::post('/login', [AuthController::Class, 'login'])->name('login.post'); 
 
-Route::post('/login', function () {
-})->name('login.post');
-Route::get('/beranda', [BerandaController::class, 'index'])->name('beranda.index');
 
+Route::get('/admin', [AdminDashboardController::class, 'index'])
+    ->name('admin.dashboard');
+
+Route::get('/user', [UserDashboardController::class, 'user'])->name('user.dashboard');
 
 Route::get('/kelas', [KelasController::class, 'index'])->name('kelas.index');
 Route::get('/kelas/create', [KelasController::class, 'create'])->name('kelas.create');

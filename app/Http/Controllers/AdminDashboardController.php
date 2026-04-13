@@ -5,17 +5,16 @@ namespace App\Http\Controllers;
 use App\Models\Kelas;
 use App\Models\Siswa;
 
-class BerandaController extends Controller
+class AdminDashboardController extends Controller
 {
     public function index()
     {
         $jumlahKelas = Kelas::count();
         $jumlahSiswa = Siswa::count();
 
-        return view('beranda.index', compact(
+        return view('admin.dashboard', compact(
             'jumlahKelas',
             'jumlahSiswa'
         ));
     }
 }
-

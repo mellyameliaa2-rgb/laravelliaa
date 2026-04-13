@@ -22,7 +22,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('beranda.index') }}">
+                    <a class="nav-link" href="{{ route('admin.dashboard') }}">
                         <i class="bi bi-house-door me-1"></i> Beranda
                     </a>
                 </li>

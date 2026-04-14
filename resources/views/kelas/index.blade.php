@@ -46,12 +46,14 @@
                     <a class="nav-link" href="{{ route('kelas.create') }}">
                         <i class="bi bi-plus-circle me-1"></i> Tambah Kelas
                     </a>
-                </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{{ route('login') }}">
-                       <i class="bi bi-box-arrow-right me-1"></i> Logout
-                    </a>
-                </li>
+                <li class="nav-item">
+    <form action="{{ route('logout') }}" method="POST" class="d-inline">
+        @csrf
+        <button type="submit" class="nav-link btn btn-link text-white" style="text-decoration:none;">
+            <i class="bi bi-box-arrow-right me-1"></i> Logout
+        </button>
+    </form>
+</li>
             </ul>
         </div>
     </div>

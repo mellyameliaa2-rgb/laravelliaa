@@ -46,11 +46,11 @@ class AuthController extends Controller
 
     // LOGOUT
     public function logout(): RedirectResponse
-    {
-        Auth::logout();
-        request()->session()->invalidate();
-        request()->session()->regenerateToken();
+{
+    Auth::logout();
+    request()->session()->invalidate();
+    request()->session()->regenerateToken();
 
-        return redirect()->route('login');
-    }
+    return redirect()->route('login');
+}
 }

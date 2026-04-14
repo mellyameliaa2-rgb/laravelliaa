@@ -13,7 +13,7 @@
 
     <style>
         body {
-            background: #f5f7fa;
+            background: #8b5e3c;
         }
 
         .card-custom {
@@ -103,7 +103,7 @@
                 </div>
             @enderror
 
-            <button type="submit" class="btn btn-primary w-100 mb-3">Login</button>
+            <button type="submit" class="btn btn-click w-100 mb-3">Login</button>
         </form>
 
         <!-- SOCIAL ICON -->
@@ -111,10 +111,10 @@
             <p class="mb-2 text-muted">Follow us</p>
 
             <div class="d-flex justify-content-center gap-4 fs-3 social-icons">
-                <a href="#"><i class="bi bi-facebook facebook"></i></a>
-                <a href="#"><i class="bi bi-instagram instagram"></i></a>
-                <a href="#"><i class="bi bi-whatsapp whatsapp"></i></a>
-                <a href="#"><i class="bi bi-google google"></i></a>
+                <a href="https://share.google/NPx1M9A93dJVAFlDV"><i class="bi bi-facebook facebook"></i></a>
+                <a href="https://share.google/RsSEtgDqM95w6vKUB"><i class="bi bi-instagram instagram"></i></a>
+                <a href="https://wa.link/5jio2v"><i class="bi bi-whatsapp whatsapp"></i></a>
+                <a href="https://share.google/CC4cGDoo2zHHgrWGd"><i class="bi bi-google google"></i></a>
             </div>
         </div>
 

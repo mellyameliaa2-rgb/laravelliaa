@@ -17,8 +17,8 @@
 
 <style>
 .logout-pill {
-    width: 42px;
-    height: 42px;
+    width: 88px;
+    height: 88px;
     border-radius: 50%;
     border: none;
     background: #ffffff;
@@ -26,14 +26,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #dc3545;
+    color: #291609;
     font-size: 18px;
     transition: all 0.25s ease;
 }
 
 .logout-pill:hover {
-    background: #dc3545;
-    color: #fff;
+    background: #925e42;
+    color: #572d07;
     transform: translateY(-2px);
     box-shadow: 0 6px 18px rgba(220,53,69,0.3);
 }
@@ -43,13 +43,18 @@
 
     <h3 class="fw-bold m-0">Dashboard User</h3>
 
-    <form action="{{ route('logout') }}" method="POST">
-        @csrf
-        <button type="submit" class="logout-pill">
-            <i class="bi bi-box-arrow-right"></i>
-        </button>
-    </form>
+<form action="{{ route('logout') }}" method="POST" onsubmit="return confirmLogout()">
+    @csrf
+   <button type="submit" class="logout-pill">
+        <i class="bi bi-box-arrow-right" style="font-size: 40px;"></i>
+    </button>
+</form>
 
+<script>
+function confirmLogout() {
+    return confirm('Yakin ingin logout?');
+}
+</script>
 </div>
 
         <div class="welcome-text">

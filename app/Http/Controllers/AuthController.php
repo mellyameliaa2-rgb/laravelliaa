@@ -30,7 +30,7 @@ class AuthController extends Controller
 
             $user = Auth::user();
 
-            // 🔥 ROLE CHECK
+            // ROLE CHECK
             if ($user->role_id == 1) {
                 return redirect()->route('admin.dashboard');
             }
@@ -38,7 +38,6 @@ class AuthController extends Controller
             return redirect()->route('user.dashboard');
         }
 
-        // ❌ LOGIN GAGAL
         return back()->withErrors([
             'login' => 'Email atau password salah'
         ])->onlyInput('email');

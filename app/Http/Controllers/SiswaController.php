@@ -8,37 +8,48 @@ use App\Models\Kelas;
 
 class SiswaController extends Controller
 {
+    // 🔹 LIST DATA SISWA
     public function index()
     {
-        $siswa = Siswa::all();
+        $siswa = Siswa::with('kelas')->get();
+
         return view('siswa.index', compact('siswa'));
     }
 
+    // 🔹 FORM CREATE
     public function create()
     {
         $kelas = Kelas::all();
+
         return view('siswa.create', compact('kelas'));
     }
 
+    // 🔹 SIMPAN DATA
     public function store(Request $request)
     {
         $request->validate([
-            'nis' => 'required|regex:/^[0-9]+$/|unique:siswa,nis',
-            'id_kelas' => 'required',
-            'nama' => 'required',
+            'nis'           => 'required|unique:siswa,nis',
+            'nama'          => 'required',
             'jenis_kelamin' => 'required|in:L,P',
-            'alamat' => 'required',
-            'no_telp' => 'required',
-        ], [
-            'nis.regex' => 'NIS harus berupa angka!',
+            'alamat'        => 'required',
+            'no_telp'       => 'required',
+            'id_kelas'      => 'required',
         ]);
 
-        Siswa::create($request->all());
+        Siswa::create([
+            'nis'           => $request->nis,
+            'nama'          => $request->nama,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'alamat'        => $request->alamat,
+            'no_telp'       => $request->no_telp,
+            'id_kelas'      => $request->id_kelas,
+        ]);
 
         return redirect()->route('siswa.index')
             ->with('success', 'Siswa berhasil ditambahkan!');
     }
 
+    // 🔹 FORM EDIT
     public function edit($id)
     {
         $siswa = Siswa::findOrFail($id);
@@ -47,30 +58,37 @@ class SiswaController extends Controller
         return view('siswa.edit', compact('siswa', 'kelas'));
     }
 
+    // 🔹 UPDATE DATA
     public function update(Request $request, $id)
     {
-        $siswa = Siswa::findOrFail($id);
-
         $request->validate([
-            'id_kelas' => 'required|exists:kelas,id',
-            'nama' => 'required',
+            'nis'           => 'required',
+            'nama'          => 'required',
             'jenis_kelamin' => 'required|in:L,P',
-            'alamat' => 'required',
-            'no_telp' => 'required',
+            'alamat'        => 'required',
+            'no_telp'       => 'required',
+            'id_kelas'      => 'required',
         ]);
 
-        $data = $request->except('nis');
+        $siswa = Siswa::findOrFail($id);
 
-        $siswa->update($data);
+        $siswa->update([
+            'nis'           => $request->nis,
+            'nama'          => $request->nama,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'alamat'        => $request->alamat,
+            'no_telp'       => $request->no_telp,
+            'id_kelas'      => $request->id_kelas,
+        ]);
 
         return redirect()->route('siswa.index')
-            ->with('success', 'Siswa berhasil diupdate!');
+            ->with('success', 'Siswa berhasil diperbarui!');
     }
 
+    // 🔹 DELETE DATA
     public function destroy($id)
     {
-        $siswa = Siswa::findOrFail($id);
-        $siswa->delete();
+        Siswa::findOrFail($id)->delete();
 
         return redirect()->route('siswa.index')
             ->with('success', 'Siswa berhasil dihapus!');

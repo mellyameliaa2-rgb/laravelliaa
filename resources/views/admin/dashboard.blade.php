@@ -42,7 +42,7 @@
 
  <div class="d-flex justify-content-between align-items-center mb-4">
 
-    <h3 class="fw-bold m-0">Dashboard User</h3>
+    <h3 class="fw-bold m-0">Dashboard Admin</h3>
 
 <form action="{{ route('logout') }}" method="POST" onsubmit="return confirmLogout()">
     @csrf

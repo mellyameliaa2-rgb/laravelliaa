@@ -8,7 +8,6 @@ use Illuminate\Http\RedirectResponse;
 
 class AuthController extends Controller
 {
-    // LOGIN
     public function login(Request $request): RedirectResponse
     {
         // VALIDASI

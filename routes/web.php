@@ -6,6 +6,7 @@ use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\AdminDashboardController;
 use App\Http\Controllers\UserDashboardController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\User\SiswaController as UserSiswaController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -15,7 +16,7 @@ Route::get('/login', function () {
     return view('login');
 })->name('login');
 
-Route::post('/login', [AuthController::Class, 'login'])->name('login.post'); 
+Route::post('/login', [AuthController::class, 'login'])->name('login.post');
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
@@ -57,4 +58,7 @@ Route::get('siswa/{id}/hapus', [SiswaController::class, 'hapus'])->name('siswa.h
 Route::delete('siswa/{id}', [SiswaController::class, 'destroy'])->name('siswa.destroy');
     });
 
+});
+Route::middleware('role:user')->group(function () {
+    Route::get('/user/siswa', [UserSiswaController::class, 'index']);
 });

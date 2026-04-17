@@ -23,7 +23,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin.dashboard') }}">
+                    <a class="nav-link" href="{{ route('kelas.index') }}">
                         <i class="bi bi-house-door me-1"></i> Beranda
                     </a>
                 </li>
@@ -37,6 +37,7 @@
                         <i class="bi bi-people me-1"></i> Data Siswa
                     </a>
                 </li>
+            </ul>
         </div>
     </div>
 </nav>

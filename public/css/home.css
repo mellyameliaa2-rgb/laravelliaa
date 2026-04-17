@@ -1,19 +1,15 @@
-/* home.css - Dashboard Estetik dengan tema coklat elegan */
-
 :root {
-    --bg-main: #8b5e3c;           /* coklat tua hangat */
-    --card-bg: rgba(244, 233, 220, 0.95);  /* coklat soft semi-transparan */
-    --border-main: #70442a;       /* garis tegas */
-    --text-dark: #3a2a1d;         /* teks coklat tua */
-    --accent-gold: #d4af37;       /* emas untuk aksen */
-    --accent-cream: #f7f1e6;      /* krim untuk teks */
-    --btn-gradient-start: #6d4c41; 
-    --btn-gradient-end: #a1887f;
-    --btn-hover-start: #8d6e63;
-    --btn-hover-end: #795548;
-    --shadow-soft: 8px 8px 0px rgba(68, 42, 27, 0.2);
-    --font-title: 'Playfair Display', serif;
-    --font-body: 'Crimson Text', serif;
+    --bg-main: #8b5e3c;           /* BACKGROUND TETAP SEPERTI YANG ANDA SUKA */
+    --card-bg: rgba(245, 240, 232, 0.96);  /* krem lembut, tidak terlalu terang */
+    --border-main: #6b4c32;       /* coklat medium, soft */
+    --text-dark: #2c1e16;
+    --accent-gold: #b89a6e;       /* gold lebih kalem, tidak menyilaukan */
+    --accent-cream: #f5efe6;
+    --btn-gradient-start: #5a3d2b;
+    --btn-gradient-end: #7a5a45;
+    --btn-hover-start: #6a4a35;
+    --btn-hover-end: #5a3d2b;
+    --shadow-soft: 6px 6px 0px rgba(0, 0, 0, 0.1);
 }
 
 /* ===== IMPORT FONT ===== */
@@ -21,7 +17,7 @@
 
 /* ===== BODY & BACKGROUND ===== */
 body {
-    background: linear-gradient(135deg, #8b5e3c 0%, #a47c5e 100%);
+    background: linear-gradient(135deg, #8b5e3c 0%, #7a4f2e 100%);
     min-height: 100vh;
     padding: 40px;
     font-family: var(--font-body);
@@ -33,13 +29,13 @@ body {
 .container {
     max-width: 1100px;
     margin: auto;
-    animation: fadeIn 0.8s ease-out;
+    animation: fadeIn 0.6s ease-out;
 }
 
 /* ===== CARD UTAMA ===== */
 .card-custom {
     background-color: var(--card-bg);
-    border: 3px solid var(--border-main);
+    border: 2px solid var(--border-main);
     border-radius: 30px;
     padding: 45px 50px;
     box-shadow: var(--shadow-soft);
@@ -47,18 +43,18 @@ body {
     overflow: hidden;
 }
 
-/* Decorative corners */
+/* Decorative corners (lebih tipis & kalem) */
 .card-custom::before {
     content: '';
     position: absolute;
-    top: 25px;
-    left: 25px;
-    right: 25px;
-    bottom: 25px;
-    border: 2px solid var(--accent-gold);
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    border: 1px solid var(--accent-gold);
     border-radius: 20px;
     pointer-events: none;
-    opacity: 0.4;
+    opacity: 0.25;
 }
 
 /* ===== JUDUL UTAMA ===== */
@@ -68,10 +64,14 @@ body {
     font-weight: 900;
     margin-bottom: 30px;
     color: var(--text-dark);
-    font-size: 2.8rem;
+    font-size: 2.6rem;
     position: relative;
-    padding-bottom: 20px;
+    padding-bottom: 18px;
     letter-spacing: 1px;
+    /* TIDAK ADA SHIMMER - TIDAK BERKEDIP */
+    background: none;
+    -webkit-background-clip: unset;
+    -webkit-text-fill-color: unset;
 }
 
 .card-custom h3::after {
@@ -80,9 +80,9 @@ body {
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 180px;
-    height: 4px;
-    background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+    width: 120px;
+    height: 2px;
+    background: var(--accent-gold);
     border-radius: 2px;
 }
 
@@ -90,203 +90,122 @@ body {
 .welcome-text {
     text-align: center;
     font-family: var(--font-title);
-    font-size: 1.5rem;
+    font-size: 1.35rem;
     color: var(--text-dark);
     margin-bottom: 45px;
     padding: 0 30px;
-    line-height: 1.6;
-    font-weight: 600;
+    line-height: 1.5;
+    font-weight: 500;
+    opacity: 0.85;
 }
 
 /* ===== STATISTIK ===== */
 .stats-container {
     display: flex;
     justify-content: center;
-    gap: 50px;
-    margin-bottom: 60px;
+    gap: 40px;
+    margin-bottom: 55px;
     flex-wrap: wrap;
 }
 
 .stat-card {
-    background: linear-gradient(135deg, #fff9f3 0%, #f5e9dd 100%);
-    border: 2px solid var(--border-main);
-    border-radius: 25px;
-    padding: 35px 30px;
-    width: 300px;
+    background: #fcf9f5;
+    border: 1px solid var(--border-main);
+    border-radius: 22px;
+    padding: 28px 25px;
+    width: 260px;
     text-align: center;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 6px 6px 0px rgba(68, 42, 27, 0.12);
-    position: relative;
-    overflow: hidden;
+    transition: all 0.25s ease;
+    box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.06);
 }
 
 .stat-card:hover {
-    transform: translateY(-8px) scale(1.03);
-    box-shadow: 10px 10px 0px rgba(68, 42, 27, 0.18);
-}
-
-.stat-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 6px;
-    background: linear-gradient(90deg, var(--accent-gold), #8b5e3c);
-}
-
-.stat-card h4 {
-    font-size: 3.2rem;
-    font-weight: 800;
-    color: var(--border-main);
-    margin: 20px 0 10px;
-    font-family: var(--font-title);
-    text-shadow: 2px 2px 0px rgba(0,0,0,0.05);
-}
-
-.stat-card p {
-    font-size: 1.2rem;
-    color: var(--text-dark);
-    margin: 0;
-    font-weight: 700;
-    letter-spacing: 0.5px;
+    transform: translateY(-4px);
+    box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.08);
 }
 
 .stat-card .stat-icon {
-    font-size: 2.8rem;
+    font-size: 2.4rem;
     color: var(--accent-gold);
-    margin-bottom: 15px;
+    margin-bottom: 12px;
     display: inline-block;
-    background: rgba(212, 175, 55, 0.15);
-    width: 80px;
-    height: 80px;
-    line-height: 80px;
+    background: rgba(184, 154, 110, 0.12);
+    width: 65px;
+    height: 65px;
+    line-height: 65px;
     border-radius: 50%;
-    transition: all 0.3s ease;
 }
 
 .stat-card:hover .stat-icon {
-    transform: rotate(15deg) scale(1.1);
-    background: rgba(212, 175, 55, 0.25);
+    transform: scale(1.01);
 }
 
-/* ===== JUDUL AKTIVITAS ===== */
 .activities-title {
     font-family: var(--font-title);
-    font-weight: 800;
-    font-size: 2rem;
+    font-weight: 700;
+    font-size: 1.8rem;
     color: var(--text-dark);
-    margin-bottom: 40px;
+    margin-bottom: 35px;
     text-align: center;
-    position: relative;
-    letter-spacing: 0.5px;
-}
-
-.activities-title::after {
-    content: '';
-    position: absolute;
-    bottom: -12px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 120px;
-    height: 3px;
-    background: linear-gradient(90deg, var(--accent-gold), var(--border-main), var(--accent-gold));
-    border-radius: 2px;
+    opacity: 0.9;
 }
 
 /* ===== GRID AKTIVITAS ===== */
 .activities-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 30px;
-    margin-top: 35px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
 }
 
 .activity-card {
-    background: linear-gradient(135deg, #fff9f3 0%, #f5e9dd 100%);
-    border: 2px solid var(--border-main);
-    border-radius: 22px;
-    padding: 30px 25px;
+    background: #fcf9f5;
+    border: 1px solid var(--border-main);
+    border-radius: 20px;
+    padding: 26px 20px;
     text-align: center;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    box-shadow: 6px 6px 0px rgba(68, 42, 27, 0.1);
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
+    transition: all 0.25s ease;
     text-decoration: none;
     color: var(--text-dark);
     display: block;
 }
 
 .activity-card:hover {
-    transform: translateY(-8px) scale(1.03);
-    box-shadow: 10px 10px 0px rgba(68, 42, 27, 0.15);
-    color: var(--text-dark);
-    text-decoration: none;
-}
-
-.activity-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 6px;
-    background: linear-gradient(90deg, var(--accent-gold), #8b5e3c);
+    transform: translateY(-4px);
+    background: #fffdfa;
 }
 
 .activity-icon {
-    font-size: 2.8rem;
+    font-size: 2.3rem;
     color: var(--accent-gold);
-    margin-bottom: 20px;
+    margin-bottom: 14px;
     display: inline-block;
-    background: rgba(212, 175, 55, 0.15);
-    width: 75px;
-    height: 75px;
-    line-height: 75px;
+    background: rgba(184, 154, 110, 0.12);
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
     border-radius: 50%;
-    transition: all 0.4s ease;
 }
 
 .activity-card:hover .activity-icon {
-    background: rgba(212, 175, 55, 0.25);
-    transform: rotate(10deg) scale(1.1);
-    animation: bounceIcon 0.5s ease;
+    transform: scale(1.01);
 }
 
-.activity-card h5 {
-    font-family: var(--font-title);
-    font-weight: 700;
-    margin-bottom: 12px;
-    font-size: 1.3rem;
-    letter-spacing: 0.5px;
-}
-
-.activity-card p {
-    font-size: 0.95rem;
-    color: #7a6a5a;
-    margin: 0;
-    line-height: 1.5;
-    font-weight: 500;
-}
-
-/* ===== FOOTER DECORATIVE ===== */
+/* ===== FOOTER ===== */
 .card-footer {
     margin-top: 50px;
     text-align: center;
-    color: #7a6a5a;
+    color: #8b7a6b;
     font-style: italic;
-    padding-top: 25px;
-    border-top: 2px dashed var(--border-main);
-    font-size: 0.95rem;
-    letter-spacing: 0.5px;
+    padding-top: 20px;
+    border-top: 1px dashed var(--border-main);
 }
 
-/* ===== ANIMATIONS ===== */
+/* ===== ANIMASI HALUS SAJA ===== */
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(10px);
     }
     to {
         opacity: 1;
@@ -294,130 +213,14 @@ body {
     }
 }
 
-@keyframes bounceIcon {
-    0%, 100% {
-        transform: translateY(0) scale(1.1);
-    }
-    50% {
-        transform: translateY(-5px) scale(1.1);
-    }
+/* HAPUS SEMUA GLOW & FLOATING BALLS YANG BIKIN SAKIT MATA */
+body::before,
+body::after {
+    display: none;
 }
 
-/* ===== RESPONSIVE DESIGN ===== */
-@media (max-width: 992px) {
-    body {
-        padding: 20px;
-    }
-    
-    .container {
-        max-width: 95%;
-    }
-    
-    .card-custom {
-        padding: 35px 30px;
-    }
-    
-    .card-custom h3 {
-        font-size: 2.3rem;
-    }
-    
-    .stats-container {
-        gap: 30px;
-    }
-    
-    .stat-card {
-        width: 250px;
-        padding: 30px 25px;
-    }
-    
-    .stat-card h4 {
-        font-size: 2.8rem;
-    }
-}
-
-@media (max-width: 768px) {
-    .card-custom {
-        padding: 25px 20px;
-        border-radius: 25px;
-    }
-    
-    .card-custom h3 {
-        font-size: 2rem;
-    }
-    
-    .welcome-text {
-        font-size: 1.3rem;
-        padding: 0 15px;
-    }
-    
-    .stats-container {
-        flex-direction: column;
-        align-items: center;
-        gap: 25px;
-    }
-    
-    .stat-card {
-        width: 100%;
-        max-width: 300px;
-    }
-    
-    .activities-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-    
-    .activity-card {
-        padding: 25px 20px;
-    }
-}
-
-@media (max-width: 480px) {
-    body {
-        padding: 15px;
-    }
-    
-    .card-custom {
-        padding: 20px 15px;
-        border-radius: 20px;
-    }
-    
-    .card-custom h3 {
-        font-size: 1.8rem;
-    }
-    
-    .welcome-text {
-        font-size: 1.1rem;
-    }
-    
-    .stat-card h4 {
-        font-size: 2.5rem;
-    }
-    
-    .activities-title {
-        font-size: 1.7rem;
-    }
-    
-    .activity-card h5 {
-        font-size: 1.2rem;
-    }
-}
-
-/* ===== PRINT STYLES ===== */
-@media print {
-    body {
-        background: white !important;
-        padding: 0 !important;
-    }
-    
-    .card-custom {
-        box-shadow: none !important;
-        border: 1px solid #000 !important;
-    }
-    
-    .activity-card,
-    .stat-card {
-        break-inside: avoid;
-        box-shadow: none !important;
-        border: 1px solid #000 !important;
-    }
+/* click feedback ringan */
+button:active,
+.activity-card:active {
+    transform: scale(0.98);
 }

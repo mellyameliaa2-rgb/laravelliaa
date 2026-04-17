@@ -36,16 +36,6 @@
                         <i class="bi bi-people me-1"></i> Data Siswa
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('siswa.create') }}">
-                        <i class="bi bi-person-plus me-1"></i> Tambah Siswa
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('kelas.create') }}">
-                        <i class="bi bi-plus-circle me-1"></i> Tambah Kelas
-                    </a>
-                </li>
             </ul>
         </div>
     </div>

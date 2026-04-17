@@ -3,11 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Data Kelas</title>
+    <title>Data Siswa</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- CSS KAMU TERAKHIR -->
-    <link rel="stylesheet" href="{{ asset('css/2index.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/2index.css') }}"> 
 </head>
 
 <body>
@@ -23,20 +22,21 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin.dashboard') }}">
+                    <a class="nav-link" href="{{ route('user.dashboard') }}">
                         <i class="bi bi-house-door me-1"></i> Beranda
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('kelas.index') }}">
+                    <a class="nav-link" href="{{ route('user.kelas.index') }}">
                         <i class="bi bi-building me-1"></i> Data Kelas
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="{{ route('siswa.index') }}">
+                    <a class="nav-link active" href="{{ route('user.siswa.index') }}">
                         <i class="bi bi-people me-1"></i> Data Siswa
                     </a>
                 </li>
+            </ul>
         </div>
     </div>
 </nav>
@@ -58,53 +58,70 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 </script>
-    <div class="container">
+<div class="container">
     <div class="card-custom">
 
-        <h1><b>Data Kelas<b></h1>
-
-        <!-- TAMBAHKAN DIV INI (sama seperti di siswa) -->
-        <div class="mb-4">
-            <a href="{{ route('kelas.create') }}" class="btn btn-outline-dark">
-                Tambah Kelas
-            </a>
-        </div>
-
+        <h1><b>Data Siswa<b></h1>
         <div class="table-responsive">
             <table>
                 <thead>
                     <tr>
-                        <th width="70">No</th>
-                        <th>Nama Kelas</th>
-                        <th>Jurusan</th>
+                        <th width="50">No</th>
+                        <th>NIS</th>
+                        <th>Nama</th>
+                        <th>ID Kelas</th>
+                        <th>Jenis Kelamin</th>
+                        <th>No. Telepon</th>
+                        <th>Alamat</th>
                         <th width="180">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                @foreach($data as $dt)
+                @foreach($siswa as $dt)
                     <tr>
-                        <td>{{ $loop->iteration }}</td> 
-                        <td>{{ $dt->nama_kelas }}</td>
-                        <td>{{ $dt->jurusan }}</td>
-                        <td class="d-flex justify-content-center gap-2">
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $dt->nis }}</td>
+                        <td>{{ $dt->nama }}</td>
+                        <td>{{ optional($dt->kelas)->nama_kelas ?? '-' }}</td>
+                        @if( $dt->jenis_kelamin == 'L')
+                        <td>Laki-laki</td>
+                        @else<td>Perempuan</td>
+                        @endif
+                       <td>
+   <a href="tel:{{ preg_replace('/[^0-9+]/', '', $dt->no_telp) }}">
+        <i class="bi bi-telephone-fill me-1"></i>
+        {{ $dt->no_telp }}
+    </a>
+</td>
+                       <td>
+    <a href="https://www.google.com/maps?q={{ urlencode($dt->alamat) }}" 
+       target="_blank"
+       style="text-decoration: none; color: inherit;">
+       
+        <i class="bi bi-geo-alt-fill" style="color:#a8572e;"></i>
+        {{ $dt->alamat }}
+    </a>
+</td>
+<td class="d-flex justify-content-center gap-2">
 
-                            <a href="{{ route('kelas.edit', $dt->id) }}"
-                               class="btn btn-outline-dark btn-sm">
-                                Edit
-                            </a>
+    <a href="{{ route('siswa.edit', $dt->id) }}"
+       class="btn btn-outline-secondary btn-sm">
+        Edit
+    </a>
 
-                            <form method="POST"
-                                  action="{{ route('kelas.destroy', $dt->id) }}"
-                                  onsubmit="return confirm('Yakin ingin menghapus kelas {{ $dt->nama_kelas }}?')">
-                                @csrf
-                                @method('DELETE')
+    <form method="POST"
+          action="{{ route('siswa.destroy', $dt->id) }}"
+          onsubmit="return confirm('Yakin ingin menghapus siswa {{ $dt->nama }}?')">
+        @csrf
+        @method('DELETE')
 
-                                <button type="submit" class="btn btn-outline-dark btn-sm">
-                                    Hapus
-                                </button>
-                            </form>
+        <button type="submit" class="btn btn-outline-danger btn-sm">
+            Hapus
+        </button>
+    </form>
 
-                        </td>
+</td>
+
                     </tr>
                 @endforeach
                 </tbody>
@@ -114,7 +131,6 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
 </div>
 
-<!-- PASTIKAN ICONS DAN SCRIPT SAMA -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 </body>

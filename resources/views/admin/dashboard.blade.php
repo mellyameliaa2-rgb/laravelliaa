@@ -40,78 +40,113 @@
 }
 </style>
 
- <div class="d-flex justify-content-between align-items-center mb-4">
+<!-- HEADER -->
+<div class="d-flex justify-content-between align-items-center mb-4">
 
     <h3 class="fw-bold m-0">Dashboard Admin</h3>
 
-<form action="{{ route('logout') }}" method="POST" onsubmit="return confirmLogout()">
-    @csrf
-   <button type="submit" class="logout-pill">
-        <i class="bi bi-box-arrow-right" style="font-size: 40px;"></i>
-    </button>
-</form>
+    <form action="{{ route('logout') }}" method="POST" onsubmit="return confirmLogout()">
+        @csrf
+        <button type="submit" class="logout-pill">
+            <i class="bi bi-box-arrow-right" style="font-size: 40px;"></i>
+        </button>
+    </form>
 
-<script>
-function confirmLogout() {
-    return confirm('Yakin ingin logout?');
-}
-</script>
+    <script>
+    function confirmLogout() {
+        return confirm('Yakin ingin logout?');
+    }
+    </script>
+
 </div>
 
-        <div class="welcome-text">
-            Selamat Datang di Sistem Informasi<br>
-            Manajemen Data Kelas & Siswa
-        </div>
+<!-- WELCOME -->
+<div class="welcome-text">
+    Selamat Datang di Sistem Informasi<br>
+    Manajemen Data Kelas & Siswa
+</div>
 
-        <!-- ===== STATISTIK ===== -->
-        <div class="stats-container">
-            <div class="stat-card">
-                <i class="bi bi-building stat-icon"></i>
-                <h4>{{ $jumlahKelas }}</h4>
-                <p>Total Kelas</p>
-            </div>
-
-            <div class="stat-card">
-                <i class="bi bi-people stat-icon"></i>
-                <h4>{{ $jumlahSiswa }}</h4>
-                <p>Total Siswa</p>
-            </div>
-        </div>
-
-        <!-- ===== AKTIVITAS ===== -->
-        <h4 class="activities-title">Menu Aktivitas</h4>
-
-        <div class="activities-grid">
-            <a href="{{ route('kelas.index') }}" class="activity-card">
-                <i class="bi bi-list-task activity-icon"></i>
-                <h5>Lihat Data Kelas</h5>
-                <p>Melihat daftar lengkap kelas yang tersedia</p>
-            </a>
-
-            <a href="{{ route('kelas.create') }}" class="activity-card">
-                <i class="bi bi-plus-circle activity-icon"></i>
-                <h5>Tambah Kelas Baru</h5>
-                <p>Menambahkan data kelas baru ke sistem</p>
-            </a>
-
-            <a href="{{ route('siswa.index') }}" class="activity-card">
-                <i class="bi bi-person-lines-fill activity-icon"></i>
-                <h5>Data Siswa</h5>
-                <p>Mengelola data siswa secara keseluruhan</p>
-            </a>
-
-            <a href="{{ route('siswa.create') }}" class="activity-card">
-                <i class="bi bi-person-plus activity-icon"></i>
-                <h5>Tambah Siswa Baru</h5>
-                <p>Menambahkan data siswa baru ke sistem</p>
-            </a>
-        </div>
-
-        <div class="card-footer">
-            <small>© {{ date('Y') }} Sistem Administrasi Sekolah</small>
-        </div>
-
+<!-- ===== STATISTIK ===== -->
+<div class="stats-container">
+    <div class="stat-card">
+        <i class="bi bi-building stat-icon"></i>
+        <h4>{{ $jumlahKelas }}</h4>
+        <p>Total Kelas</p>
     </div>
+
+    <div class="stat-card">
+        <i class="bi bi-people stat-icon"></i>
+        <h4>{{ $jumlahSiswa }}</h4>
+        <p>Total Siswa</p>
+    </div>
+</div>
+
+<!-- ===== INSIGHT TAMBAHAN ===== -->
+<div class="row mt-4">
+
+    <div class="col-md-4">
+        <div class="card p-3 text-center">
+            <h6 class="text-muted">Rata-rata Siswa per Kelas</h6>
+            <h3>
+                {{ $jumlahKelas > 0 ? round($jumlahSiswa / $jumlahKelas, 1) : 0 }}
+            </h3>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card p-3 text-center">
+            <h6 class="text-muted">Total Data Sistem</h6>
+            <h3>{{ $jumlahKelas + $jumlahSiswa }}</h3>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card p-3 text-center">
+            <h6 class="text-muted">Status Sistem</h6>
+            <h3 class="text-success">Aktif</h3>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- ===== MENU AKTIVITAS ===== -->
+<br><h4 class="activities-title">Menu Aktivitas</h4>
+
+<div class="activities-grid">
+
+    <a href="{{ route('kelas.index') }}" class="activity-card">
+        <i class="bi bi-list-task activity-icon"></i>
+        <h5>Lihat Data Kelas</h5>
+        <p>Melihat daftar lengkap kelas yang tersedia</p>
+    </a>
+
+    <a href="{{ route('kelas.create') }}" class="activity-card">
+        <i class="bi bi-plus-circle activity-icon"></i>
+        <h5>Tambah Kelas Baru</h5>
+        <p>Menambahkan data kelas baru ke sistem</p>
+    </a>
+
+    <a href="{{ route('siswa.index') }}" class="activity-card">
+        <i class="bi bi-person-lines-fill activity-icon"></i>
+        <h5>Data Siswa</h5>
+        <p>Mengelola data siswa secara keseluruhan</p>
+    </a>
+
+    <a href="{{ route('siswa.create') }}" class="activity-card">
+        <i class="bi bi-person-plus activity-icon"></i>
+        <h5>Tambah Siswa Baru</h5>
+        <p>Menambahkan data siswa baru ke sistem</p>
+    </a>
+
+</div>
+
+<!-- FOOTER -->
+<div class="card-footer">
+    <small>© {{ date('Y') }} Sistem Administrasi Sekolah</small>
+</div>
+
+</div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>

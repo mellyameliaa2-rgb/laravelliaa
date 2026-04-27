@@ -7,14 +7,15 @@ use App\Models\Siswa;
 use App\Models\Kelas;
 
 class SiswaController extends Controller
-{
+
     // 🔹 LIST DATA SISWA
+{
     public function index()
     {
         $siswa = Siswa::with('kelas')->get();
-
         return view('siswa.index', compact('siswa'));
     }
+
 
     // 🔹 FORM CREATE
     public function create()

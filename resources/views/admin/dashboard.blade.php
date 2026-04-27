@@ -88,7 +88,7 @@
         <div class="card p-3 text-center">
             <h6 class="text-muted">Rata-rata Siswa per Kelas</h6>
             <h3>
-                {{ $jumlahKelas > 0 ? round($jumlahSiswa / $jumlahKelas, 1) : 0 }}
+               {{ $rataRata }}
             </h3>
         </div>
     </div>
@@ -143,7 +143,7 @@
 
 <!-- FOOTER -->
 <div class="card-footer">
-    <small>© {{ date('Y') }} Sistem Administrasi Sekolah</small>
+    <small>© {{ date('Y') }} Sistem Data Manajemen Sekolah</small>
 </div>
 
 </div>

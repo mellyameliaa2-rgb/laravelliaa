@@ -84,13 +84,13 @@ function confirmLogout() {
 
         <div class="activities-grid">
 
-            <a href="{{ route('kelas.index') }}" class="activity-card">
+            <a href="{{ route('user.kelas.index') }}" class="activity-card">
                 <i class="bi bi-list-task activity-icon"></i>
                 <h5>Lihat Kelas</h5>
                 <p>Melihat daftar kelas yang tersedia</p>
             </a>
 
-            <a href="{{ route('siswa.index') }}" class="activity-card">
+            <a href="{{ route('user.siswa.index') }}" class="activity-card">
                 <i class="bi bi-person-lines-fill activity-icon"></i>
                 <h5>Lihat Data Siswa</h5>
                 <p>Melihat data siswa</p>
@@ -99,7 +99,7 @@ function confirmLogout() {
         </div>
 
         <div class="card-footer">
-            <small>© {{ date('Y') }} Sistem Administrasi Sekolah</small>
+            <small>© {{ date('Y') }} Sistem Data Manajemen Sekolah</small>
         </div>
 
     </div>

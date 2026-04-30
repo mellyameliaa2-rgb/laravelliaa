@@ -84,6 +84,13 @@ function confirmLogout() {
 
         <div class="activities-grid">
 
+         <a href="{{ route('user.siswa.create') }}" class="activity-card">
+                <i class="bi bi-person-badge activity-icon"></i>
+                <h5>Isi Data Diri</h5>
+                <p>Mengisi Data Diri</p>
+            </a>
+
+
             <a href="{{ route('user.kelas.index') }}" class="activity-card">
                 <i class="bi bi-list-task activity-icon"></i>
                 <h5>Lihat Kelas</h5>

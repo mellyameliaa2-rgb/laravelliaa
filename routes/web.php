@@ -37,9 +37,17 @@ Route::middleware(['auth', 'role:user'])->group(function () {
 Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/user/siswa', [UserSiswaController::class, 'index'])
         ->name('user.siswa.index');
+
+    Route::get('/user/siswa/create', [UserSiswaController::class, 'create'])
+        ->name('user.siswa.create');
+
+    Route::post('/user/siswa/store', [UserSiswaController::class, 'store'])
+        ->name('user.siswa.store');
+
 });
 Route::get('/user/kelas', [UserKelasController::class, 'index'])
     ->name('user.kelas.index');
+
 
 
 
